@@ -1,1 +1,30 @@
+#!/bin/sh
 
+# Ustawienia środowiskowe
+export PATH=/usr/local/bin:/usr/bin:/bin
+
+# Uruchamianie programów
+sh -c 'xrandr --output DisplayPort-0 --mode 1280x1024 --pos 0x0 --rotate normal --output DisplayPort-1 --off --output HDMI-A-0 --primary --mode 1280x1024 --pos 1280x0 --rotate normal --output HDMI-A-1 --mode 1280x1024 --pos 2560x0 --rotate normal --output DVI-D-0 --off'
+corectrl
+./adb devices
+sh "/home/sky/.conky/conky-startup.sh"
+/opt/Deckboard/deckboard %U
+flatpak run nz.mega.MEGAsync
+plank
+rustdesk --tray
+crow
+tilda
+/usr/bin/gnome-keyring-daemon --start --components=secrets
+/usr/bin/syncthing serve --no-browser --logfile=default
+/usr/bin/python3 /usr/share/syncthing/syncthing.py
+xset s off
+/usr/bin/tilda
+xset -dpms
+xset s noblank
+xrandr --newmode "1280x1020_75.00" 138.75  1280 1368 1504 1728  1020 1023 1033 1063 -hsync +vsync
+xrandr --addmode HDMI-A-0 "1280x1020_75.00"
+xrandr --addmode HDMI-A-1 "1280x1020_75.00"
+xrandr --addmode DisplayPort-0 "1280x1020_75.00"
+xrandr --output HDMI-A-0 --mode "1280x1020_75.00"
+xrandr --output HDMI-A-1 --mode "1280x1020_75.00"
+xrandr --output DisplayPort-0 --mode "1280x1020_75.00"
